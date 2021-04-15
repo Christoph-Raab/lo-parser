@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  log_parser:
+    image: log-parser:0.1.0
+    build: .
+    container_name: log-parser
+    volumes:
+      - "./logs:/logs:ro"
+    environment:
+      - LISTEN_PORT=8080
+      - LOG_FILE=/logs/NASA_access_log_Jul95
+      - LOG_LEVEL=INFO
+    ports:
+    - "8080:8080"
